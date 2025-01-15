@@ -1,9 +1,11 @@
 operator:
+  scope:
+    namespace: true
   replicas: 1
   upgradeCRD: true
   image:
-    repository: ghcr.io/nvidia/k8s-nim-operator
-    tag: main
+    repository: quay.io/shivamerla/k8s-nim-operator
+    tag: runai
     pullSecrets: []
     pullPolicy: Always
   args:
@@ -43,4 +45,4 @@ metricsService:
 
 nfd:
   nodeFeatureRules:
-    deviceID: true
+    deviceID: false

@@ -30,11 +30,21 @@ spec:
         imagePullPolicy: {{ .Values.operator.image.pullPolicy }}
         env:
           - name: WATCH_NAMESPACE
+          {{- if .Values.operator.scope.namespace }}
+            value: {{ .Release.Namespace }}
+          {{- else }}
             value: ""
+          {{- end }}
           - name: OPERATOR_NAMESPACE
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: OPERATOR_SCOPE
+          {{- if .Values.operator.scope.namespace }}
+            value: namespace
+          {{- else }}
+            value: cluster
+          {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz

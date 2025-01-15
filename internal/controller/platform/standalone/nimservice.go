@@ -112,7 +112,7 @@ func (r *NIMServiceReconciler) reconcileNIMService(ctx context.Context, nimServi
 
 	// Sync role
 	err = r.renderAndSyncResource(ctx, nimService, &renderer, &rbacv1.Role{}, func() (client.Object, error) {
-		return renderer.Role(nimService.GetRoleParams())
+		return renderer.Role(nimService.GetRoleParams(r.orchestratorType))
 	}, "role", conditions.ReasonRoleFailed)
 	if err != nil {
 		return ctrl.Result{}, err

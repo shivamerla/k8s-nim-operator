@@ -19,6 +19,7 @@ package k8sutil
 import (
 	"context"
 	"fmt"
+	"os"
 
 	corev1 "k8s.io/api/core/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -106,4 +107,9 @@ func GetOrchestratorType(k8sClient client.Client) (OrchestratorType, error) {
 
 	// Default to Upstream Kubernetes if no specific platform labels are found
 	return K8s, nil
+}
+
+// IsNamespaceScoped returns true if the operator is deployed as namespace scoped
+func IsNamespaceScoped() bool {
+	return os.Getenv("OPERATOR_SCOPE") == "namespace"
 }

@@ -209,10 +209,18 @@ func (r *NemoGuardrailReconciler) GetEventRecorder() record.EventRecorder {
 
 // GetOrchestratorType returns the container platform type
 func (r *NemoGuardrailReconciler) GetOrchestratorType() (k8sutil.OrchestratorType, error) {
+
+	// For namespace scoped operator, cannot fetch node labels
+	// default to K8s
+	if k8sutil.IsNamespaceScoped() {
+		r.orchestratorType = k8sutil.K8s
+		return r.orchestratorType, nil
+	}
+
 	if r.orchestratorType == "" {
 		orchestratorType, err := k8sutil.GetOrchestratorType(r.GetClient())
 		if err != nil {
-			return k8sutil.Unknown, fmt.Errorf("Unable to get container orchestrator type, %v", err)
+			return k8sutil.Unknown, fmt.Errorf("unable to determine container orchestrator type: %v", err)
 		}
 		r.orchestratorType = orchestratorType
 		r.GetLogger().Info("Container orchestrator is successfully set", "type", orchestratorType)

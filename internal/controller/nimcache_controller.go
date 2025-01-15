@@ -233,13 +233,21 @@ func (r *NIMCacheReconciler) GetEventRecorder() record.EventRecorder {
 
 // GetOrchestratorType returns the container platform type
 func (r *NIMCacheReconciler) GetOrchestratorType() (k8sutil.OrchestratorType, error) {
+
+	// For namespace scoped operator, cannot fetch node labels
+	// default to K8s
+	if k8sutil.IsNamespaceScoped() {
+		r.orchestratorType = k8sutil.K8s
+		return r.orchestratorType, nil
+	}
+
 	if r.orchestratorType == "" {
 		orchestratorType, err := k8sutil.GetOrchestratorType(r.GetClient())
 		if err != nil {
-			return k8sutil.Unknown, fmt.Errorf("Unable to get container orchestrator type, %v", err)
+			return k8sutil.Unknown, fmt.Errorf("unable to determine container orchestrator type: %v", err)
 		}
 		r.orchestratorType = orchestratorType
-		r.GetLogger().Info("Container orchestrator is successfully set", "type", orchestratorType)
+		r.GetLogger().Info("Container orchestrator successfully set", "type", orchestratorType)
 	}
 	return r.orchestratorType, nil
 }
@@ -326,14 +334,17 @@ func (r *NIMCacheReconciler) reconcileRole(ctx context.Context, nimCache *appsv1
 				"app": "k8s-nim-operator",
 			},
 		},
-		Rules: []rbacv1.PolicyRule{
-			{
-				APIGroups:     []string{"security.openshift.io"},
-				Resources:     []string{"securitycontextconstraints"},
-				ResourceNames: []string{"nonroot"},
-				Verbs:         []string{"use"},
-			},
-		},
+		Rules: []rbacv1.PolicyRule{},
+	}
+
+	// Add SCC rule only if orchestratorType is OpenShift
+	if r.orchestratorType == k8sutil.OpenShift {
+		desiredRole.Rules = append(desiredRole.Rules, rbacv1.PolicyRule{
+			APIGroups:     []string{"security.openshift.io"},
+			Resources:     []string{"securitycontextconstraints"},
+			ResourceNames: []string{"nonroot"},
+			Verbs:         []string{"use"},
+		})
 	}
 
 	// Check if the Role already exists
@@ -1340,12 +1351,17 @@ func (r *NIMCacheReconciler) createManifestConfigMap(ctx context.Context, nimCac
 func (r *NIMCacheReconciler) GetNodeGPUProducts(ctx context.Context) (map[string]string, error) {
 	logger := r.GetLogger()
 
-	// List all nodes
+	// Return empty list for namespace scoped operator
+	if k8sutil.IsNamespaceScoped() {
+		return nil, nil
+	}
+
+	// List all nodes to detect GPU types in the cluster
 	nodeList := &corev1.NodeList{}
 	err := r.Client.List(ctx, nodeList)
 	if err != nil {
-		logger.Error(err, "unable to list nodes to detect gpu types in the cluster")
-		return nil, fmt.Errorf("unable to list gpu nodes: %w", err)
+		logger.Error(err, "Unable to list nodes to detect GPU types in the cluster")
+		return nil, fmt.Errorf("unable to list GPU nodes: %w", err)
 	}
 
 	// Map to store node names and their GPU product labels

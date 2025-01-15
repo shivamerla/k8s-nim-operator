@@ -21,6 +21,7 @@ import (
 	"maps"
 	"os"
 
+	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
 	rendertypes "github.com/NVIDIA/k8s-nim-operator/internal/render/types"
 	utils "github.com/NVIDIA/k8s-nim-operator/internal/utils"
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
@@ -674,21 +675,23 @@ func (n *NIMService) GetIngressParams() *rendertypes.IngressParams {
 }
 
 // GetRoleParams returns params to render Role from templates
-func (n *NIMService) GetRoleParams() *rendertypes.RoleParams {
+func (n *NIMService) GetRoleParams(orchestratorType k8sutil.OrchestratorType) *rendertypes.RoleParams {
 	params := &rendertypes.RoleParams{}
 
 	// Set metadata
 	params.Name = n.GetName()
 	params.Namespace = n.GetNamespace()
 
-	// Set rules to use SCC
-	params.Rules = []rbacv1.PolicyRule{
-		{
+	params.Rules = []rbacv1.PolicyRule{}
+
+	if orchestratorType == k8sutil.OpenShift {
+		// Set rules to use SCC
+		params.Rules = append(params.Rules, rbacv1.PolicyRule{
 			APIGroups:     []string{"security.openshift.io"},
 			Resources:     []string{"securitycontextconstraints"},
 			ResourceNames: []string{"nonroot"},
 			Verbs:         []string{"use"},
-		},
+		})
 	}
 
 	return params

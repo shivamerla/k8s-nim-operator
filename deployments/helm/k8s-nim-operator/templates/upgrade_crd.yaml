@@ -10,7 +10,11 @@ metadata:
     helm.sh/hook-weight: "0"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+{{- if .Values.operator.scope.namespace }}
+kind: Role
+{{- else }}
 kind: ClusterRole
+{{- end }}
 metadata:
   name: nim-operator-upgrade-crd-hook-role
   annotations:
@@ -30,7 +34,11 @@ rules:
       - patch
       - update
 ---
+{{- if .Values.operator.scope.namespace }}
+kind: RoleBinding
+{{- else }}
 kind: ClusterRoleBinding
+{{- end }}
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: nim-operator-upgrade-crd-hook-binding
@@ -43,7 +51,11 @@ subjects:
     name: nim-operator-upgrade-crd-hook-sa
     namespace: {{ .Release.Namespace }}
 roleRef:
+  {{- if .Values.operator.scope.namespace }}
+  kind: Role
+  {{- else }}
   kind: ClusterRole
+  {{- end }}
   name: nim-operator-upgrade-crd-hook-role
   apiGroup: rbac.authorization.k8s.io
 ---

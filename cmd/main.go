@@ -29,6 +29,7 @@ import (
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	ctrl "sigs.k8s.io/controller-runtime"
+	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"sigs.k8s.io/controller-runtime/pkg/metrics/filters"
@@ -116,6 +117,25 @@ func main() {
 		TLSOpts: tlsOpts,
 	})
 
+	// Read environment variables
+	operatorScope := os.Getenv("OPERATOR_SCOPE")   // "cluster" or "namespace"
+	watchNamespace := os.Getenv("WATCH_NAMESPACE") // Namespace to watch, required if "namespace" scoped
+
+	// Determine cache options based on scope
+	var cacheOptions cache.Options
+	if operatorScope == "namespace" && watchNamespace != "" {
+		cacheOptions = cache.Options{
+			DefaultNamespaces: map[string]cache.Config{
+				watchNamespace: cache.Config{},
+			},
+		}
+		ctrl.Log.Info("Operator running in namespace-scoped mode", "namespace", watchNamespace)
+	} else {
+		cacheOptions = cache.Options{} // Cluster-scoped
+		ctrl.Log.Info("Operator running in cluster-scoped mode")
+	}
+
+	// Create a manager with the determined options
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 		Scheme: scheme,
 		Metrics: metricsserver.Options{
@@ -128,20 +148,10 @@ func main() {
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
 		LeaderElectionID:       "a0715c6e.nvidia.com",
-		// LeaderElectionReleaseOnCancel defines if the leader should step down voluntarily
-		// when the Manager ends. This requires the binary to immediately end when the
-		// Manager is stopped, otherwise, this setting is unsafe. Setting this significantly
-		// speeds up voluntary leader transitions as the new leader don't have to wait
-		// LeaseDuration time first.
-		//
-		// In the default scaffold provided, the program ends immediately after
-		// the manager stops, so would be fine to enable this option. However,
-		// if you are doing or is intended to do any operation such as perform cleanups
-		// after the manager stops then its usage might be unsafe.
-		// LeaderElectionReleaseOnCancel: true,
+		Cache:                  cacheOptions,
 	})
 	if err != nil {
-		setupLog.Error(err, "unable to start manager")
+		ctrl.Log.Error(err, "unable to start manager")
 		os.Exit(1)
 	}
 

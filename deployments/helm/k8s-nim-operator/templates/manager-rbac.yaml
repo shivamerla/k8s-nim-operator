@@ -1,10 +1,15 @@
 apiVersion: rbac.authorization.k8s.io/v1
+{{- if .Values.operator.scope.namespace }}
+kind: Role
+{{- else }}
 kind: ClusterRole
+{{- end }}
 metadata:
   name: k8s-nim-operator-role
   labels:
   {{- include "k8s-nim-operator.labels" . | nindent 4 }}
 rules:
+{{- if not .Values.operator.scope.namespace }}
 - apiGroups:
   - ""
   resources:
@@ -13,6 +18,7 @@ rules:
   - get
   - list
   - watch
+{{- end }}
 - apiGroups:
   - ""
   resources:
@@ -44,7 +50,6 @@ rules:
   - pods/eviction
   - serviceaccounts
   - services
-  - services/finalizers
   verbs:
   - create
   - delete
@@ -219,15 +224,6 @@ rules:
   - update
   - watch
 - apiGroups:
-  - config.openshift.io
-  resources:
-  - clusterversions
-  - proxies
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
   - ""
   resources:
   - persistentvolumeclaims
@@ -236,19 +232,6 @@ rules:
   - delete
   - get
   - list
-- apiGroups:
-  - monitoring.coreos.com
-  resources:
-  - prometheusrules
-  - servicemonitors
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
 - apiGroups:
   - rbac.authorization.k8s.io
   resources:
@@ -307,34 +290,6 @@ rules:
   - list
   - watch
 - apiGroups:
-  - security.openshift.io
-  resourceNames:
-  - nonroot
-  resources:
-  - securitycontextconstraints
-  verbs:
-  - use
-- apiGroups:
-  - security.openshift.io
-  resources:
-  - securitycontextconstraints
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - storage.k8s.io
-  resources:
-  - storageclasses
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
   - authentication.k8s.io
   resources:
   - tokenreviews
@@ -349,7 +304,11 @@ rules:
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+{{- if .Values.operator.scope.namespace }}
+kind: RoleBinding
+{{- else }}
 kind: ClusterRoleBinding
+{{- end }}
 metadata:
   name: k8s-nim-operator-rolebinding
   labels:
@@ -359,7 +318,11 @@ metadata:
   {{- include "k8s-nim-operator.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
+  {{- if .Values.operator.scope.namespace }}
+  kind: Role
+  {{- else }}
   kind: ClusterRole
+  {{- end }}
   name: k8s-nim-operator-role
 subjects:
 - kind: ServiceAccount
