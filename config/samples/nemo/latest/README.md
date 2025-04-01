@@ -1,4 +1,4 @@
-# NeMo Custom Resources for 25.04
+# NeMo Custom Resources
 
 These CRs are designed to deploy NeMo microservices using the NIM Operator.
 
