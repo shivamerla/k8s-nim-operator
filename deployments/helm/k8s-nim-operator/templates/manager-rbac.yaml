@@ -313,6 +313,32 @@ rules:
   - patch
   - update
 - apiGroups:
+  - apps.nvidia.com
+  resources:
+  - distributednimservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps.nvidia.com
+  resources:
+  - distributednimservices/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - apps.nvidia.com
+  resources:
+  - distributednimservices/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - batch
   resources:
   - jobs

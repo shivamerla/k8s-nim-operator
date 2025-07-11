@@ -256,6 +256,19 @@ func main() {
 		os.Exit(1)
 	}
 
+	if err = controller.NewDistributedNIMServiceReconciler(
+		mgr.GetClient(),
+		mgr.GetScheme(),
+		updater,
+		discoveryClient,
+		render.NewRenderer("/manifests"),
+		ctrl.Log.WithName("controllers").WithName("DistributedNIMService"),
+		platformImpl,
+	).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "DistributedNIMService")
+		os.Exit(1)
+	}
+
 	// +kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {

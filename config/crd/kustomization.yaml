@@ -11,6 +11,7 @@ resources:
 - bases/apps.nvidia.com_nemodatastores.yaml
 - bases/apps.nvidia.com_nemoentitystores.yaml
 - bases/apps.nvidia.com_nimbuilds.yaml
+- bases/apps.nvidia.com_distributednimservices.yaml
 # +kubebuilder:scaffold:crdkustomizeresource
 
 patches:
@@ -29,6 +30,7 @@ patches:
 #- path: patches/cainjection_in_nemoevaluators.yaml
 #- path: patches/cainjection_in_nemodatastores.yaml
 #- path: patches/cainjection_in_nemoentitystores.yaml
+#- path: patches/cainjection_in_distributednimservices.yaml
 # +kubebuilder:scaffold:crdkustomizecainjectionpatch
 
 # [WEBHOOK] To enable webhook, uncomment the following section
