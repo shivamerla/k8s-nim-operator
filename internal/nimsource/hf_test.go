@@ -21,8 +21,8 @@ import (
 	. "github.com/onsi/gomega"
 	"k8s.io/utils/ptr"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/nimsource"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/nimsource"
 )
 
 var _ = Describe("HF", func() {

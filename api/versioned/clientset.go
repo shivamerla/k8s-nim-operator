@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"net/http"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/versioned/typed/apps/v1alpha1"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/versioned/typed/apps/v1alpha1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

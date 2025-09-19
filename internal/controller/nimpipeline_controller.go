@@ -33,11 +33,11 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
 
-	utils "github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	utils "github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
 )
 
 // NIMPipelineReconciler reconciles a NIMPipeline object.

@@ -468,7 +468,7 @@ metadata:
     containerImage: 'ghcr.io/nvidia/k8s-nim-operator:release-2.0'
     support: NVIDIA
     capabilities: Basic Install
-    repository: github.com/NVIDIA/k8s-nim-operator
+    repository: github.com/NVIDIA/k8s-nim-operator/v2
 spec:
   displayName: The NVIDIA NIM Operator for Kubernetes
   description: >-

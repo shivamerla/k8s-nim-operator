@@ -22,7 +22,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/shared"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/shared"
 )
 
 // Platform defines the methods required for an inference platform integration.

@@ -41,14 +41,14 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	"github.com/NVIDIA/k8s-nim-operator/internal/nimmodels"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
-	rendertypes "github.com/NVIDIA/k8s-nim-operator/internal/render/types"
-	"github.com/NVIDIA/k8s-nim-operator/internal/shared"
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/nimmodels"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
+	rendertypes "github.com/NVIDIA/k8s-nim-operator/v2/internal/render/types"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/shared"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 // GetScheme returns the scheme of the reconciler.

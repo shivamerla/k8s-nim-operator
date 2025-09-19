@@ -33,8 +33,8 @@ import (
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/controller/platform/standalone"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/controller/platform/standalone"
 )
 
 var _ = Describe("NIMService Controller", func() {

@@ -39,10 +39,10 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"
 	"sigs.k8s.io/controller-runtime/pkg/client/interceptor"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	nimparserv1 "github.com/NVIDIA/k8s-nim-operator/internal/nimparser/v1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/shared"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	nimparserv1 "github.com/NVIDIA/k8s-nim-operator/v2/internal/nimparser/v1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/shared"
 )
 
 var _ = Describe("NIMCache Controller", func() {

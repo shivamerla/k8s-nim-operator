@@ -9,7 +9,7 @@ Purpose of this project is to install NeMo microservice dependencies and not ite
 Please clone the repo with below command 
 
 ```
-git clone https://github.com/NVIDIA/k8s-nim-operator.git
+git clone https://github.com/NVIDIA/k8s-nim-operator/v2.git
 ```
 
 ## Installing Dependencies

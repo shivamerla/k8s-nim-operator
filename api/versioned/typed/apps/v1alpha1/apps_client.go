@@ -20,8 +20,8 @@ package v1alpha1
 import (
 	"net/http"
 
-	v1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/api/versioned/scheme"
+	v1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/api/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 

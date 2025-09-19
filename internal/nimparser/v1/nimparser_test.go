@@ -19,12 +19,12 @@ package v1
 import (
 	"path/filepath"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 var _ = Describe("NIMParser", func() {

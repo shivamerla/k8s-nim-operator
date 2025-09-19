@@ -49,16 +49,16 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 	"sigs.k8s.io/yaml"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	platform "github.com/NVIDIA/k8s-nim-operator/internal/controller/platform"
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	"github.com/NVIDIA/k8s-nim-operator/internal/nimparser"
-	nimparserutils "github.com/NVIDIA/k8s-nim-operator/internal/nimparser/utils"
-	"github.com/NVIDIA/k8s-nim-operator/internal/nimsource"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
-	"github.com/NVIDIA/k8s-nim-operator/internal/shared"
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	platform "github.com/NVIDIA/k8s-nim-operator/v2/internal/controller/platform"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/nimparser"
+	nimparserutils "github.com/NVIDIA/k8s-nim-operator/v2/internal/nimparser/utils"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/nimsource"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/shared"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 const (

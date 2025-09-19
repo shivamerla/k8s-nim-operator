@@ -43,9 +43,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
 )
 
 var _ = Describe("NemoEvaluator Controller", func() {

@@ -24,9 +24,9 @@ import (
 	"k8s.io/client-go/tools/record"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
 )
 
 // Reconciler defines the methods required by a reconciler.

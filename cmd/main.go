@@ -35,13 +35,13 @@ import (
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	"github.com/NVIDIA/k8s-nim-operator/internal/controller"
-	"github.com/NVIDIA/k8s-nim-operator/internal/controller/platform"
-	"github.com/NVIDIA/k8s-nim-operator/internal/controller/platform/kserve"
-	"github.com/NVIDIA/k8s-nim-operator/internal/controller/platform/standalone"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/controller"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/controller/platform"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/controller/platform/kserve"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/controller/platform/standalone"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
 	// +kubebuilder:scaffold:imports
 )
 

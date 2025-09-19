@@ -17,7 +17,7 @@ limitations under the License.
 package nimparser
 
 import (
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
 )
 
 const (

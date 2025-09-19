@@ -1,4 +1,4 @@
-module github.com/NVIDIA/k8s-nim-operator
+module github.com/NVIDIA/k8s-nim-operator/v2
 
 go 1.23.0
 

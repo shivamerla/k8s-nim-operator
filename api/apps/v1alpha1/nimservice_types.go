@@ -31,9 +31,9 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/ptr"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	rendertypes "github.com/NVIDIA/k8s-nim-operator/internal/render/types"
-	utils "github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	rendertypes "github.com/NVIDIA/k8s-nim-operator/v2/internal/render/types"
+	utils "github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!

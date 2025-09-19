@@ -41,12 +41,12 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
 
-	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/internal/conditions"
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
-	"github.com/NVIDIA/k8s-nim-operator/internal/shared"
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	appsv1alpha1 "github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/conditions"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/shared"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 // NemoEntitystoreFinalizer is the finalizer annotation.

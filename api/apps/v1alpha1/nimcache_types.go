@@ -24,7 +24,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/ptr"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/k8sutil"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/k8sutil"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!

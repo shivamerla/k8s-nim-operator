@@ -35,8 +35,8 @@ import (
 
 	"github.com/NVIDIA/k8s-test-infra/pkg/diagnostics"
 
-	"github.com/NVIDIA/k8s-nim-operator/api/apps/v1alpha1"
-	"github.com/NVIDIA/k8s-nim-operator/api/versioned"
+	"github.com/NVIDIA/k8s-nim-operator/v2/api/apps/v1alpha1"
+	"github.com/NVIDIA/k8s-nim-operator/v2/api/versioned"
 )
 
 // Regex patterns for string substitution in CRs.

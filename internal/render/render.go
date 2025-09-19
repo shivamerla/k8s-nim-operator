@@ -46,8 +46,8 @@ import (
 	yamlDecoder "k8s.io/apimachinery/pkg/util/yaml"
 	yamlConverter "sigs.k8s.io/yaml"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/render/types"
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render/types"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 const (

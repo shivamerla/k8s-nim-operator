@@ -22,7 +22,7 @@ appVersion: "2.0.2"
 
 icon: https://assets.nvidiagrid.net/ngc/logos/NIMOperator.png
 sources:
-- https://github.com/NVIDIA/k8s-nim-operator
+- https://github.com/NVIDIA/k8s-nim-operator/v2
 home: https://docs.nvidia.com/nim-operator/latest/index.html
 keywords:
   - gpu

@@ -29,7 +29,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/utils"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/utils"
 )
 
 // ErrConfigMapKeyNotFound indicates an error that the given key is missing from the config map.

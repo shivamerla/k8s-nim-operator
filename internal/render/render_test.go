@@ -32,8 +32,8 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/NVIDIA/k8s-nim-operator/internal/render"
-	"github.com/NVIDIA/k8s-nim-operator/internal/render/types"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render"
+	"github.com/NVIDIA/k8s-nim-operator/v2/internal/render/types"
 )
 
 type templateData struct {
